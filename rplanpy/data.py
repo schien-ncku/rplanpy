@@ -58,7 +58,7 @@ class RplanData:
             i = stats.mode(
                 self.instance[region.coords[:, 0],
                               region.coords[:, 1]],
-                axis=None
+                axis=None, keepdims=True
             )[0][0]
             y0, x0, y1, x1 = np.array(region.bbox)
             rooms.append([y0, x0, y1, x1, c, i])
