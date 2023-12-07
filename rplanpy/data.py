@@ -53,7 +53,7 @@ class RplanData:
             c = stats.mode(
                 self.category[region.coords[:, 0],
                               region.coords[:, 1]],
-                axis=None
+                axis=None, keepdims=True
             )[0][0]
             i = stats.mode(
                 self.instance[region.coords[:, 0],
