@@ -63,6 +63,7 @@ def plot_floorplan_graph(data: data.RplanData, ax=None, title=None,
     pos = nx.spring_layout(G)
     if with_colors:
         colors = [np.array(utils.ROOM_COLOR.get(G.nodes[n]['category'], [255, 255, 255]))/255 for n in G.nodes]
+        sizes = [G.nodes[n]['area'] for n in G.nodes]
         nx.draw(G, pos, with_labels=True, ax=ax, node_color=colors)
     else:
         nx.draw(G, pos, with_labels=True, ax=ax, )
