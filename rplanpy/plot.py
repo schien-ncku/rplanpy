@@ -62,11 +62,12 @@ def plot_floorplan_graph(data: data.RplanData, ax=None, title=None,
     G = data.get_graph()
     pos = nx.spring_layout(G)
     sizes = [G.nodes[n]['area'] for n in G.nodes]
+    edge_widths = [int(G.edges[n]['door'])*6+1 for n in G.edges]
     if with_colors:
         colors = [np.array(utils.ROOM_COLOR.get(G.nodes[n]['category'], [255, 255, 255]))/255 for n in G.nodes]
-        nx.draw(G, pos, with_labels=True, ax=ax, node_color=colors, node_size=sizes)
+        nx.draw(G, pos, with_labels=True, ax=ax, node_color=colors, node_size=sizes, width=edge_widths)
     else:
-        nx.draw(G, pos, with_labels=True, ax=ax, node_size=sizes)
+        nx.draw(G, pos, with_labels=True, ax=ax, node_size=sizes, width=edge_widths)
     if edge_label:
         edge_labels = nx.get_edge_attributes(G, edge_label)
         nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, ax=ax)
