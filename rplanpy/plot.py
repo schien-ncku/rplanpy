@@ -65,7 +65,7 @@ def plot_floorplan_graph(data: data.RplanData, ax=None, title=None,
     edge_widths = [int(G.edges[n]['door'])*6+1 for n in G.edges]
     if with_colors:
         colors = [np.array(utils.ROOM_COLOR.get(G.nodes[n]['category'], [255, 255, 255]))/255 for n in G.nodes]
-        nx.draw(G, pos, with_labels=True, ax=ax, node_color=colors, node_size=sizes, width=edge_widths)
+        nx.draw(G, pos, with_labels=False, ax=ax, node_color=colors, node_size=sizes, width=edge_widths)
     else:
         nx.draw(G, pos, with_labels=True, ax=ax, node_size=sizes, width=edge_widths)
     if edge_label:
