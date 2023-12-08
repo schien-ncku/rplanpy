@@ -12,11 +12,9 @@ def test_functions(file: str, out_file: str = 'example_graph.png', plot_original
         image = imageio.imread(file)
         ax[0].imshow(image)
         ax[0].axis("off")
-        ax[0].set_title("Original image")
-    rplanpy.plot.plot_floorplan(data, ax=ax[plot_original+0], title="Rooms and doors")
+    rplanpy.plot.plot_floorplan(data, ax=ax[plot_original+0])
     ax = rplanpy.plot.plot_floorplan_graph(
-        data=data, with_colors=True, edge_label='door', ax=ax[plot_original+1],
-        title="Building graph"
+        data=data, with_colors=True, ax=ax[plot_original+1],
     )
     plt.tight_layout()
     plt.savefig(out_file)
